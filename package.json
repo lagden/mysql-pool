@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MySQL Pooling connections",
   "main": "index.js",
   "files": [
@@ -13,7 +13,14 @@
     "report": "nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "nyc ava"
+    "test": "DEBUG=mysql-pool:* nyc ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lagden/mysql-pool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lagden/mysql-pool/issues"
   },
   "keywords": [
     "mysql",
@@ -39,7 +46,7 @@
     }
   },
   "dependencies": {
-    "@tadashi/debug": "1.1.0",
+    "@tadashi/debug": "2.0.0",
     "mysql": "2.15.0"
   },
   "devDependencies": {

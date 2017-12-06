@@ -4,7 +4,7 @@
  */
 'use strict'
 
-const {log} = require('@tadashi/debug')
+const {log} = require('@tadashi/debug')('mysql-pool')
 const create = require('./lib/create')
 
 /** Class to create, connect and run queries. */
