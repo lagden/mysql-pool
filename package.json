@@ -39,7 +39,7 @@
     }
   },
   "dependencies": {
-    "@tadashi/debug": "1.1.0",
+    "@tadashi/debug": "2.0.0",
     "mysql": "2.15.0"
   },
   "devDependencies": {
