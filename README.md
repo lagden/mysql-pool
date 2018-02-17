@@ -12,7 +12,7 @@
 
 [npm-img]:         https://img.shields.io/npm/v/@tadashi/mysql-pool.svg
 [npm]:             https://www.npmjs.com/package/@tadashi/mysql-pool
-[ci-img]:          https://travis-ci.org/lagden/mysql-pool.svg
+[ci-img]:          https://api.travis-ci.org/lagden/mysql-pool.svg?branch=master
 [ci]:              https://travis-ci.org/lagden/mysql-pool
 [coveralls-img]:   https://coveralls.io/repos/github/lagden/mysql-pool/badge.svg?branch=master
 [coveralls]:       https://coveralls.io/github/lagden/mysql-pool?branch=master
