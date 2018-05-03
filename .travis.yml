@@ -3,4 +3,5 @@ services:
 language: node_js
 node_js:
   - "8.9"
+  - "10"
 after_script: npm run coverage
