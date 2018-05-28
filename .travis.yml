@@ -2,5 +2,7 @@ services:
   - mysql
 language: node_js
 node_js:
-  - "8.9"
-after_script: npm run coverage
+  - "8.0.0"
+  - "10.0.0"
+script: "npm run test-cov"
+after_script: "npm i coveralls@3.0.1 && npm run report"

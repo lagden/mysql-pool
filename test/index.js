@@ -1,7 +1,7 @@
 'use strict'
 
 import test from 'ava'
-import MysqlPool from '../.'
+import MysqlPool from '..'
 
 const pool = new MysqlPool()
 

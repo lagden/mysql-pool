@@ -12,7 +12,6 @@ class MysqlPool {
 	/**
 	 * Create pool connections
 	 * @param {object} config  - connection options (https://github.com/mysqljs/mysql#connection-options)
-	 * @returns {object}
 	 */
 	constructor(config) {
 		this.pool = create(config)
@@ -21,7 +20,7 @@ class MysqlPool {
 	/**
 	 * Get connection
 	 * @private
-	 * @returns {Promise}
+	 * @returns {Promise} Connection
 	 */
 	_conn() {
 		return new Promise((resolve, reject) => {
@@ -40,10 +39,11 @@ class MysqlPool {
 	 * Run queries
 	 * @param {string} q         - MySQL Queries
 	 * @param {array} [data=[]]  - Query parameters (https://github.com/mysqljs/mysql#escaping-query-values)
-	 * @returns {Promise}
+	 * @returns {Promise} Query result
 	 */
 	query(q, data = []) {
-		return this._conn()
+		return this
+			._conn()
 			.then(connection => new Promise((resolve, reject) => {
 				const query = connection.query(q, data, (err, results, fields) => {
 					connection.release()
@@ -54,8 +54,7 @@ class MysqlPool {
 					}
 				})
 				log(query.sql)
-			})
-		)
+			}))
 	}
 }
 

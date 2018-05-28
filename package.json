@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MySQL Pooling connections",
   "main": "index.js",
   "files": [
@@ -9,11 +9,11 @@
     "lib"
   ],
   "scripts": {
-    "doc": "jsdoc index.js -t node_modules/docdash -d ./doc/",
-    "report": "nyc report --reporter=html",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "DEBUG=mysql-pool:* nyc ava"
+    "test": "DEBUG=mysql-pool:* NODE_ENV=test ava",
+    "pretest-cov": "npm run pretest",
+    "test-cov": "NODE_ENV=test nyc ava"
   },
   "repository": {
     "type": "git",
@@ -46,15 +46,12 @@
     }
   },
   "dependencies": {
-    "@tadashi/debug": "2.0.0",
+    "@tadashi/debug": "2.1.0",
     "mysql": "2.15.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
-    "coveralls": "3.0.0",
-    "docdash": "0.4.0",
-    "jsdoc": "3.5.5",
-    "nyc": "11.4.1",
-    "xo": "0.20.2"
+    "nyc": "11.8.0",
+    "xo": "0.21.1"
   }
 }
