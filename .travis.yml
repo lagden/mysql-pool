@@ -2,7 +2,7 @@ services:
   - mysql
 language: node_js
 node_js:
-  - "8.0.0"
-  - "10.0.0"
+  - "8"
+  - "10"
 script: "npm run test-cov"
 after_script: "npm i coveralls@3.0.1 && npm run report"
