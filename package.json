@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@tadashi/debug": "2.1.0",
-    "mysql": "2.15.0"
+    "mysql": "2.16.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
