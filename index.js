@@ -4,8 +4,11 @@
  */
 'use strict'
 
-const {log} = require('@tadashi/debug')('mysql-pool')
+const debug = require('debug')
 const create = require('./lib/create')
+
+// const error = debug('mysql-pool:error')
+const log = debug('mysql-pool:log')
 
 /** Class to create, connect and run queries. */
 class MysqlPool {

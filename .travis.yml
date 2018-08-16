@@ -5,4 +5,4 @@ node_js:
   - "8"
   - "10"
 script: "npm run test-cov"
-after_script: "npm i coveralls@3.0.1 && npm run report"
+after_script: "npm i coveralls && npm run report"
