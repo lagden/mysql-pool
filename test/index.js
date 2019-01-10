@@ -11,6 +11,6 @@ test('ok', async t => {
 })
 
 test('err', async t => {
-	const error = await t.throws(pool.query('SELEC 1 + 1 as total'))
+	const error = await t.throwsAsync(pool.query('SELEC 1 + 1 as total'))
 	t.is(error.message.split(':')[0], 'ER_PARSE_ERROR')
 })

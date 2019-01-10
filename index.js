@@ -7,7 +7,7 @@
 const debug = require('debug')
 const create = require('./lib/create')
 
-// const error = debug('mysql-pool:error')
+const error = debug('mysql-pool:error')
 const log = debug('mysql-pool:log')
 
 /** Class to create, connect and run queries. */
@@ -30,6 +30,7 @@ class MysqlPool {
 			this.pool.getConnection((err, connection) => {
 				/* istanbul ignore next */
 				if (err) {
+					error(err)
 					reject(err)
 				} else {
 					resolve(connection)
@@ -51,6 +52,7 @@ class MysqlPool {
 				const query = connection.query(q, data, (err, results, fields) => {
 					connection.release()
 					if (err) {
+						error(err)
 						reject(err)
 					} else {
 						resolve({results, fields})
