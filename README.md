@@ -42,8 +42,11 @@ $ npm i -S @tadashi/mysql-pool
 const MysqlPool = require('@tadashi/mysql-pool')
 
 const pool = new MysqlPool()
-const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
-// => 2
+
+;(async () => {
+  const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
+  // => 2
+})()
 ```
 
 
