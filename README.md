@@ -23,8 +23,8 @@
 
 [xo-img]:          https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo]:              https://github.com/sindresorhus/xo
-[greenkeeper-img]: https://badges.greenkeeper.io/lagden/mysql-pool.svg
-[greenkeeper]:     https://greenkeeper.io/
+[greenkeeper-img]: https://snyk.io/test/github/lagden/mysql-pool/badge.svg
+[greenkeeper]:     https://snyk.io/test/github/lagden/mysql-pool
 
 
 Make pooling connections with [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
