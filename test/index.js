@@ -1,7 +1,7 @@
 'use strict'
 
-import test from 'ava'
-import MysqlPool from '..'
+const test = require('ava')
+const MysqlPool = require('..')
 
 const pool = new MysqlPool()
 const dbName = 'test'
