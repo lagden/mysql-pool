@@ -3,7 +3,9 @@
 const test = require('ava')
 const MysqlPool = require('..')
 
-const pool = new MysqlPool()
+const pool = new MysqlPool({
+	user: 'root'
+})
 const dbName = 'test'
 const table = 'tmp_tbl'
 
