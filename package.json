@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "MySQL Pooling connections",
   "main": "index.js",
   "files": [
@@ -44,11 +44,11 @@
     }
   },
   "dependencies": {
-    "debug": "4.1.1",
+    "debug": "4.3.1",
     "mysql": "2.18.1"
   },
   "devDependencies": {
-    "ava": "3.10.1",
-    "xo": "0.32.1"
+    "ava": "3.15.0",
+    "xo": "0.38.2"
   }
 }
