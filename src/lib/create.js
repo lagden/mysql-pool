@@ -3,7 +3,7 @@
  * @module lib/create.js
  */
 
-import {createPool} from 'mysql'
+import {createPool} from '@vlasky/mysql'
 
 /* istanbul ignore next */
 const {
