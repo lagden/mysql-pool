@@ -34,9 +34,9 @@ jobs:
       
       - name: Run test
         run: npm test
-        # env:
-        #   CI: true
-        #   REDIS: 127.0.0.1:${{ job.services.redis.ports[6379] }}
+        env:
+          MYUSER: root
+          MYPASS: root
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
