@@ -20,7 +20,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Init MySQL
-        run: sudo /etc/init.d/mysql start
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e "ALTER USER 'root'@'127.0.0.1' IDENTIFIED WITH mysql_native_password BY 'root';"  -uroot -proot
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
