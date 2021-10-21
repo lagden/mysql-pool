@@ -1,16 +1,5 @@
-/**
- * Module MysqlPool
- * @module index
- */
-'use strict'
-
-const debug = require('debug')
-const create = require('./lib/create')
-
-const log = {
-	error: debug('mysql-pool:error'),
-	info: debug('mysql-pool:info')
-}
+import * as debug from './lib/debug.js'
+import create from './lib/create.js'
 
 /** Class to create, connect and run queries. */
 class MysqlPool {
@@ -32,7 +21,7 @@ class MysqlPool {
 			this.pool.getConnection((error, connection) => {
 				/* istanbul ignore next */
 				if (error) {
-					log.error(error)
+					debug.error(error)
 					reject(error)
 				} else {
 					resolve(connection)
@@ -54,15 +43,15 @@ class MysqlPool {
 				const query = connection.query(q, data, (error, results, fields) => {
 					connection.release()
 					if (error) {
-						log.error(error)
+						debug.error(error)
 						reject(error)
 					} else {
 						resolve({results, fields})
 					}
 				})
-				log.info(query.sql)
+				debug.info(query.sql)
 			}))
 	}
 }
 
-module.exports = MysqlPool
+export default MysqlPool

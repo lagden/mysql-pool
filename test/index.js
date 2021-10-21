@@ -1,7 +1,5 @@
-'use strict'
-
-const test = require('ava')
-const MysqlPool = require('..')
+import test from 'ava'
+import MysqlPool from '../src/mysql-pool.js'
 
 const pool = new MysqlPool({
 	user: 'root'

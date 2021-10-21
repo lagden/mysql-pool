@@ -1,17 +1,16 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "MySQL Pooling connections",
-  "main": "index.js",
+  "type": "module",
+  "main": "src/mysql-pool.js",
   "files": [
     "LICENSE",
     "README.md",
     "lib"
   ],
   "scripts": {
-    "report": "nyc report --reporter=text-lcov | coveralls",
-    "pretest": "xo",
-    "test": "ava"
+    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap --verbose"
   },
   "repository": {
     "type": "git",
@@ -28,27 +27,12 @@
   ],
   "author": "Thiago Lagden",
   "license": "MIT",
-  "xo": {
-    "envs": [
-      "node"
-    ],
-    "semicolon": false,
-    "rules": {
-      "camelcase": [
-        "error",
-        {
-          "properties": "never"
-        }
-      ],
-      "capitalized-comments": 0
-    }
-  },
   "dependencies": {
     "debug": "4.3.2",
     "mysql": "2.18.1"
   },
   "devDependencies": {
     "ava": "3.15.0",
-    "xo": "0.38.2"
+    "c8": "7.10.0"
   }
 }

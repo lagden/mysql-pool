@@ -1,10 +1,9 @@
 /**
  * Module Create Pool
- * @module lib/create
+ * @module lib/create.js
  */
-'use strict'
 
-const {createPool} = require('mysql')
+import {createPool} from 'mysql'
 
 /* istanbul ignore next */
 const {
@@ -35,4 +34,4 @@ function create(config) {
 	return createPool(_config)
 }
 
-module.exports = create
+export default create
