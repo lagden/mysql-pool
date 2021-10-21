@@ -4,7 +4,7 @@ import MysqlPool from '../src/mysql-pool.js'
 const pool = new MysqlPool({
 	user: 'root'
 })
-const dbName = 'test'
+const dbName = 'tmp_test'
 const table = 'tmp_tbl'
 
 test.before(async () => {
@@ -33,6 +33,15 @@ test('err', async t => {
 	t.is(error.message.split(':')[0], 'ER_PARSE_ERROR')
 })
 
+test('connection err', async t => {
+	const _pool = new MysqlPool({
+		user: 'none',
+		password: 'none',
+	})
+	const error = await t.throwsAsync(_pool.query('SELEC 1 + 1 as total'))
+	t.is(error.message.split(':')[0], 'ER_ACCESS_DENIED_ERROR')
+})
+
 test('bulk', async t => {
 	const data = [{name: 'Sabrina', age: 40}, {name: 'Lucas', age: 6}, {name: 'Thiago', age: 37}]
 	const keys = Object.keys(data[0])
@@ -48,7 +57,6 @@ test('bulk', async t => {
 
 	const {results: {insertId}} = await pool.query(`INSERT INTO ?? (${keys.join(', ')}) VALUES ?`, [`${dbName}.${table}`, items])
 	const {results} = await pool.query(`SELECT ${keys.join(', ')} FROM ??`, [`${dbName}.${table}`])
-	t.is(insertId, 1)
-	t.is(results.shift().name, 'Sabrina')
-	t.is(results.pop().name, 'Thiago')
+	t.snapshot(insertId, 'total')
+	t.snapshot(results, 'results')
 })
