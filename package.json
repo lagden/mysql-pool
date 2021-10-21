@@ -7,7 +7,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "lib"
+    "src"
   ],
   "scripts": {
     "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap --verbose"
