@@ -10,6 +10,9 @@
     "src"
   ],
   "scripts": {
+    "docker:rm": "docker kill mysql-pool-test; docker rm mysql-pool-test",
+    "predocker": "npm run docker:rm",
+    "docker": "docker run -p 3306:3306 --name mysql-pool-test -e MYSQL_ROOT_PASSWORD=root -d mysql:latest",
     "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap --verbose"
   },
   "repository": {
@@ -28,11 +31,11 @@
   "author": "Thiago Lagden",
   "license": "MIT",
   "dependencies": {
-    "debug": "4.3.2",
+    "debug": "4.3.4",
     "@vlasky/mysql": "2.18.5"
   },
   "devDependencies": {
-    "ava": "3.15.0",
-    "c8": "7.10.0"
+    "ava": "4.3.1",
+    "c8": "7.12.0"
   }
 }

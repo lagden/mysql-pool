@@ -1,9 +1,20 @@
 import test from 'ava'
 import MysqlPool from '../src/mysql-pool.js'
 
+const {
+	MYHOST: host = '127.0.0.1',
+	MYPORT: port = 3306,
+	MYUSER: user = 'root',
+	MYPASS: password = 'root',
+} = process.env
+
 const pool = new MysqlPool({
-	user: 'root'
+	host,
+	port,
+	user,
+	password,
 })
+
 const dbName = 'tmp_test'
 const table = 'tmp_tbl'
 
