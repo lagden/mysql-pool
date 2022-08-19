@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "MySQL Pooling connections",
   "type": "module",
   "main": "src/mysql-pool.js",
@@ -11,9 +11,9 @@
   ],
   "scripts": {
     "docker:rm": "docker kill mysql-pool-test; docker rm mysql-pool-test",
-    "predocker": "npm run docker:rm",
+    "_predocker": "npm run docker:rm",
     "docker": "docker run -p 3306:3306 --name mysql-pool-test -e MYSQL_ROOT_PASSWORD=root -d mysql:latest",
-    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap --verbose"
+    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --serial"
   },
   "repository": {
     "type": "git",

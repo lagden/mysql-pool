@@ -19,7 +19,6 @@ class MysqlPool {
 	_conn() {
 		return new Promise((resolve, reject) => {
 			this.pool.getConnection((error, connection) => {
-				/* istanbul ignore next */
 				if (error) {
 					debug.error(error)
 					reject(error)
@@ -51,6 +50,25 @@ class MysqlPool {
 				})
 				debug.info(query.sql)
 			}))
+	}
+
+	/**
+	 * End connection
+	 * @returns {Promise}
+	 */
+	 end() {
+		return new Promise((resolve, reject) => {
+			this.pool.end(error => {
+				/* c8 ignore start */
+				if (error) {
+					debug.error(error)
+					reject(error)
+				} else {
+					resolve()
+				}
+				/* c8 ignore stop */
+			})
+		})
 	}
 }
 

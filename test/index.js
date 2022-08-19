@@ -30,9 +30,9 @@ test.before(async () => {
 	await pool.query(createTable, [dbName, `${dbName}.${table}`])
 })
 
-test.after(async () => {
-	await pool.query('DROP DATABASE ??', [dbName])
-})
+// test.after(async () => {
+// 	await pool.query('DROP DATABASE ??', [dbName])
+// })
 
 test('ok', async t => {
 	const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
@@ -70,4 +70,11 @@ test('bulk', async t => {
 	const {results} = await pool.query(`SELECT ${keys.join(', ')} FROM ??`, [`${dbName}.${table}`])
 	t.snapshot(insertId, 'total')
 	t.snapshot(results, 'results')
+})
+
+test('end', async t => {
+	await pool.query('DROP DATABASE ??', [dbName])
+	await pool.end()
+	const error = await t.throwsAsync(pool.query('SELECT 1 + ? as total', [1]))
+	t.is(error.message, 'Pool is closed.')
 })
