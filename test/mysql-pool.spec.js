@@ -1,4 +1,5 @@
 import test from 'ava'
+import {parseNumber} from '../src/lib/parse-number.js'
 import MysqlPool from '../src/mysql-pool.js'
 
 const {
@@ -33,6 +34,15 @@ test.before(async () => {
 // test.after(async () => {
 // 	await pool.query('DROP DATABASE ??', [dbName])
 // })
+
+test('parseNumber', t => {
+	t.is(parseNumber('2.'), 2)
+	t.is(parseNumber(2.02), undefined)
+	t.is(parseNumber(2.0), 2)
+	t.is(parseNumber('2'), 2)
+	t.is(parseNumber(2), 2)
+	t.is(parseNumber('xxx'), undefined)
+})
 
 test('ok', async t => {
 	const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
