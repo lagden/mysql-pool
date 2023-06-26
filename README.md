@@ -32,11 +32,6 @@ const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
 ```
 
 
-## API
-
-[See documentation](https://lagden.github.io/mysql-pool)
-
-
 ## License
 
 MIT © [Thiago Lagden](http://lagden.in)

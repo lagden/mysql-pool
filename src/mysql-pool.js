@@ -1,22 +1,28 @@
 import * as debug from './lib/debug.js'
 import create from './lib/create.js'
 
-/** Class to create, connect and run queries. */
+const {
+	MYQUERYTIMEOUT: timeout = 30_000,
+} = process.env
+
+/**
+ * Represents a connection pool for MySQL database.
+ */
 class MysqlPool {
 	/**
-	 * Create pool connections
-	 * @param {object} config  - connection options (https://github.com/mysqljs/mysql#connection-options)
+	 * Creates a new instance of MysqlPool.
+	 * @param {Object} config - The configuration object for creating the connection pool.
 	 */
 	constructor(config) {
 		this.pool = create(config)
 	}
 
 	/**
-	 * Get connection
+	 * Establishes a connection to the database.
 	 * @private
-	 * @returns {Promise} Connection
+	 * @returns {Promise<import('mysql').PoolConnection>} - A promise that resolves to the connection object.
 	 */
-	_conn() {
+	#conn() {
 		return new Promise((resolve, reject) => {
 			this.pool.getConnection((error, connection) => {
 				if (error) {
@@ -30,16 +36,22 @@ class MysqlPool {
 	}
 
 	/**
-	 * Run queries
-	 * @param {string} q         - MySQL Queries
-	 * @param {array} [data=[]]  - Query parameters (https://github.com/mysqljs/mysql#escaping-query-values)
-	 * @returns {Promise} Query result
+	 * Executes a SQL query on the database.
+	 * @param {string} sql - The SQL query to execute.
+	 * @param {Array} [values=[]] - The values to substitute in the SQL query.
+	 * @param {Object} [options={}] - Additional options for the query.
+	 * @returns {Promise<{results: Array<any>, fields: Array<import('mysql').FieldInfo>}>} - A promise that resolves to the query results and fields information.
 	 */
-	query(q, data = []) {
+	query(sql, values = [], options = {}) {
 		return this
-			._conn()
+			.#conn()
 			.then(connection => new Promise((resolve, reject) => {
-				const query = connection.query(q, data, (error, results, fields) => {
+				const query = connection.query({
+					sql,
+					values,
+					timeout,
+					...options,
+				}, (error, results, fields) => {
 					connection.release()
 					if (error) {
 						debug.error(error)
@@ -53,10 +65,10 @@ class MysqlPool {
 	}
 
 	/**
-	 * End connection
-	 * @returns {Promise}
+	 * Closes the connection pool.
+	 * @returns {Promise<void>} - A promise that resolves when the connection pool is closed.
 	 */
-	 end() {
+	end() {
 		return new Promise((resolve, reject) => {
 			this.pool.end(error => {
 				/* c8 ignore start */

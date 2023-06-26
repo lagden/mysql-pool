@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "MySQL Pooling connections",
   "type": "module",
   "main": "src/mysql-pool.js",
@@ -32,10 +32,10 @@
   "license": "MIT",
   "dependencies": {
     "debug": "4.3.4",
-    "@vlasky/mysql": "2.18.5"
+    "@vlasky/mysql": "2.18.6"
   },
   "devDependencies": {
-    "ava": "4.3.3",
-    "c8": "7.12.0"
+    "ava": "5.3.1",
+    "c8": "8.0.0"
   }
 }
