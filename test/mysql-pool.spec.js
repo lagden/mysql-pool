@@ -51,7 +51,9 @@ test('connection err', async t => {
 	})
 	const error = await t.throwsAsync(_pool.query('SELEC 1 + 1 as total'))
 	// t.is(error.message.split(':')[0], 'ER_ACCESS_DENIED_ERROR')
+	console.log('---->>>', error.message)
 	t.is(error.message, 'MySQL is requesting the sha256_password authentication method, which is not supported.')
+	t.pass('ok')
 })
 
 test('bulk', async t => {

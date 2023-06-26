@@ -34,4 +34,4 @@ const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
 
 ## License
 
-MIT © [Thiago Lagden](http://lagden.in)
+MIT © [Thiago Lagden](https://github.com/lagden)
