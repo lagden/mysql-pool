@@ -31,10 +31,6 @@ test.before(async () => {
 	await pool.query(createTable, [dbName, `${dbName}.${table}`])
 })
 
-// test.after(async () => {
-// 	await pool.query('DROP DATABASE ??', [dbName])
-// })
-
 test('parseNumber', t => {
 	t.is(parseNumber('2.'), 2)
 	t.is(parseNumber(2.02), undefined)

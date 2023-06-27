@@ -7,7 +7,7 @@ let {
 	MYPORT: port = 3306,
 	MYUSER: user = 'root',
 	MYPASS: password = '',
-	MYLIMIT: connectionLimit = 100,
+	MYLIMIT: connectionLimit = 5,
 	MYMULTIPLE: multipleStatements = true,
 	MYCONNECTTIMEOUT: connectTimeout = 30_000,
 	MYACQUIRETIMEOUT: acquireTimeout = 30_000,

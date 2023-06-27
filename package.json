@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "MySQL Pooling connections",
   "type": "module",
   "main": "src/mysql-pool.js",

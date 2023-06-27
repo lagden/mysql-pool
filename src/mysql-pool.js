@@ -1,8 +1,9 @@
 import * as debug from './lib/debug.js'
 import create from './lib/create.js'
+import {parseNumber} from './lib/parse-number.js'
 
 const {
-	MYQUERYTIMEOUT: timeout = 30_000,
+	MYQUERYTIMEOUT: timeout,
 } = process.env
 
 /**
@@ -49,7 +50,7 @@ class MysqlPool {
 				const query = connection.query({
 					sql,
 					values,
-					timeout,
+					timeout: parseNumber(timeout) ?? 30_000,
 					...options,
 				}, (error, results, fields) => {
 					connection.release()

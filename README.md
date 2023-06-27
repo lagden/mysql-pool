@@ -26,9 +26,12 @@ $ npm i -S @tadashi/mysql-pool
 ```js
 import MysqlPool from '@tadashi/mysql-pool'
 
-const pool = new MysqlPool()
+const pool = new MysqlPool() // => https://github.com/mysqljs/mysql#connection-options
 const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
 // => 2
+
+// Closing all the connections in a pool
+await pool.end()
 ```
 
 
