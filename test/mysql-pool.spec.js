@@ -59,6 +59,8 @@ test('connection err', async t => {
 	t.true([
 		'MySQL is requesting the sha256_password authentication method, which is not supported.',
 		'connect ECONNREFUSED ::1:3306',
+		// eslint-disable-next-line quotes
+		"ER_ACCESS_DENIED_ERROR: Access denied for user 'none'@'172.17.0.1' (using password: YES)",
 	].includes(error.message))
 })
 

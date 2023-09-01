@@ -14,11 +14,28 @@
 
 Make pooling connections with [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
 
+
 ## Install
 
 ```
 $ npm i -S @tadashi/mysql-pool
 ```
+
+
+## Environment variable
+
+Variable             | Type    | Required   | Default       | Description
+--------             | --------| -----------| --------------| ------------
+MYHOST               | string  | no         | localhost     | Hostname or server address
+MYPORT               | number  | no         | 3306          | Port number for the connection
+MYUSER               | string  | no         | root          | User authentication
+MYPASS               | string  | no         |               | Authentication password
+MYLIMIT              | number  | no         | 5             | Limit or threshold value
+MYCONNECTTIMEOUT     | number  | no         | 30000         | Connection timeout in milliseconds
+MYACQUIRETIMEOUT     | number  | no         | 30000         | Resource acquisition timeout in milliseconds
+MYMULTIPLE           | boolean | no         | true          | Allowing multiple statements
+MYWAITFORCONNECTIONS | boolean | no         | true          | Waiting for available connections
+MYENCODE             | number  | no         | 0             | MYUSER and MYPASS encoded in base64
 
 
 ## Usage
