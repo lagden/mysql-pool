@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/mysql-pool",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "MySQL Pooling connections",
   "type": "module",
   "main": "src/mysql-pool.js",
@@ -15,7 +15,7 @@
     "docker": "docker run -p 3306:3306 --name mysql-pool-test -e MYSQL_ROOT_PASSWORD=root -d mysql:latest",
     "eslint": "eslint --ignore-path .gitignore .",
     "pretest": "npm run eslint",
-    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcovonly --reporter=cobertura ava --tap --serial -T 30s"
+    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcovonly --reporter=cobertura ava --serial -T 30s"
   },
   "repository": {
     "type": "git",
@@ -33,14 +33,15 @@
   "author": "Thiago Lagden",
   "license": "MIT",
   "dependencies": {
-    "debug": "4.3.4",
-    "@vlasky/mysql": "2.18.6"
+    "@tadashi/common": "4.2.1",
+    "@vlasky/mysql": "2.18.6",
+    "debug": "4.3.4"
   },
   "devDependencies": {
-    "ava": "5.3.1",
+    "ava": "6.0.1",
     "c8": "8.0.1",
-    "eslint": "8.48.0",
-    "eslint-plugin-sonarjs": "0.21.0",
-    "eslint-plugin-unicorn": "48.0.1"
+    "eslint": "8.55.0",
+    "eslint-plugin-sonarjs": "0.23.0",
+    "eslint-plugin-unicorn": "49.0.0"
   }
 }

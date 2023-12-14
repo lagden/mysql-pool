@@ -1,6 +1,6 @@
+import {parseNumber} from '@tadashi/common'
 import * as debug from './lib/debug.js'
 import create from './lib/create.js'
-import {parseNumber} from './lib/parse-number.js'
 
 const {
 	MYQUERYTIMEOUT: timeout,

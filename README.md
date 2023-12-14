@@ -18,7 +18,7 @@ Make pooling connections with [MySQL](https://github.com/mysqljs/mysql#pooling-c
 ## Install
 
 ```
-$ npm i -S @tadashi/mysql-pool
+$ npm i @tadashi/mysql-pool
 ```
 
 

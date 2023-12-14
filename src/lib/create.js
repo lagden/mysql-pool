@@ -1,5 +1,5 @@
 import {createPool} from '@vlasky/mysql'
-import {parseNumber} from './parse-number.js'
+import {parseNumber} from '@tadashi/common'
 
 /* c8 ignore start */
 let {

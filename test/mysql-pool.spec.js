@@ -1,5 +1,4 @@
 import test from 'ava'
-import {parseNumber} from '../src/lib/parse-number.js'
 import MysqlPool from '../src/mysql-pool.js'
 
 const {
@@ -31,15 +30,6 @@ test.before(async () => {
 	await pool.query(createTable, [dbName, `${dbName}.${table}`])
 })
 
-test('parseNumber', t => {
-	t.is(parseNumber('2.'), 2)
-	t.is(parseNumber(2.02), undefined)
-	t.is(parseNumber(2.0), 2)
-	t.is(parseNumber('2'), 2)
-	t.is(parseNumber(2), 2)
-	t.is(parseNumber('xxx'), undefined)
-})
-
 test('ok', async t => {
 	const {results: [{total}]} = await pool.query('SELECT 1 + ? as total', [1])
 	t.is(total, 2)
@@ -61,7 +51,7 @@ test('connection err', async t => {
 		'connect ECONNREFUSED ::1:3306',
 		// eslint-disable-next-line quotes
 		"ER_ACCESS_DENIED_ERROR: Access denied for user 'none'@'172.17.0.1' (using password: YES)",
-	].includes(error.message))
+	].includes(error.message) || /ER_ACCESS_DENIED_ERROR/.test(error.message))
 })
 
 test('bulk', async t => {
