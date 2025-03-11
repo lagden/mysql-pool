@@ -9,8 +9,8 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{md,yml,yaml,json,graphql}]
+[*.{md,ya?ml,json,jsonc?,graphql,py}]
 indent_style = space
 
-[*.{md,yml,yaml}]
+[*.{md,ya?ml}]
 trim_trailing_whitespace = false

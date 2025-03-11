@@ -1,47 +1,59 @@
 {
-  "name": "@tadashi/mysql-pool",
-  "version": "2.3.1",
-  "description": "MySQL Pooling connections",
-  "type": "module",
-  "main": "src/mysql-pool.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "src"
-  ],
-  "scripts": {
-    "docker:rm": "docker kill mysql-pool-test; docker rm mysql-pool-test",
-    "_predocker": "npm run docker:rm",
-    "docker": "docker run -p 3306:3306 --name mysql-pool-test -e MYSQL_ROOT_PASSWORD=root -d mysql:latest",
-    "eslint": "eslint --ignore-path .gitignore .",
-    "pretest": "npm run eslint",
-    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcovonly --reporter=cobertura ava --serial -T 30s"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lagden/mysql-pool.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lagden/mysql-pool/issues"
-  },
-  "keywords": [
-    "mysql",
-    "pool",
-    "connection",
-    "query"
-  ],
-  "author": "Thiago Lagden",
-  "license": "MIT",
-  "dependencies": {
-    "@tadashi/common": "4.2.1",
-    "@vlasky/mysql": "2.18.6",
-    "debug": "4.3.4"
-  },
-  "devDependencies": {
-    "ava": "6.0.1",
-    "c8": "8.0.1",
-    "eslint": "8.55.0",
-    "eslint-plugin-sonarjs": "0.23.0",
-    "eslint-plugin-unicorn": "49.0.0"
-  }
+	"name": "@tadashi/mysql-pool",
+	"version": "3.0.0",
+	"description": "MySQL Pooling connections",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/lagden/mysql-pool.git"
+	},
+	"bugs": {
+		"url": "https://github.com/lagden/mysql-pool/issues"
+	},
+	"keywords": [
+		"mysql",
+		"pool",
+		"connection",
+		"query"
+	],
+	"author": "Thiago Lagden",
+	"license": "MIT",
+	"files": [
+		"src",
+		"types",
+		"LICENSE",
+		"README.md"
+	],
+	"type": "module",
+	"main": "./src/mysql-pool.js",
+	"types": "./types/mysql-pool.d.ts",
+	"exports": {
+		".": {
+			"import": "./src/mysql-pool.js",
+			"types": "./types/mysql-pool.d.ts"
+		}
+	},
+	"scripts": {
+		"tsc": "tsc",
+		"lint": "deno lint",
+		"check": "deno fmt --check",
+		"format": "deno fmt",
+		"docker:mysql:rm": "docker kill mysql-pool-test; docker rm mysql-pool-test",
+		"docker:mysql": "docker run -p 3306:3306 --name mysql-pool-test -e MYSQL_ROOT_PASSWORD=root -d mysql:latest",
+		"pretest": "npm run check && npm run lint",
+		"test": "c8 --reporter=text --reporter=text-summary --reporter=lcovonly --reporter=cobertura ava --serial -T 30s"
+	},
+	"peerDependencies": {
+		"debug": ">= 4 < 5",
+		"supports-color": ">= 8 < 11"
+	},
+	"dependencies": {
+		"debug": "4.4.0",
+		"mysql2": "3.13.0"
+	},
+	"devDependencies": {
+		"@types/node": "22.13.10",
+		"ava": "6.2.0",
+		"c8": "10.1.3",
+		"typescript": "5.8.2"
+	}
 }
